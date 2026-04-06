@@ -36,7 +36,7 @@ export function AssistantRegister() {
       setUser(data.data.user);
       setToken(data.data.accessToken);
       setAccessToken(data.data.accessToken);
-      navigate('/');
+      navigate("/", { replace: true });
     },
     onError(error: any) {
       const details = error.response?.data?.errors?.details;

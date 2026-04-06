@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { UserIcon, ArrowLeftIcon, CameraIcon, EyeIcon, EyeOffIcon, Loader2 } from "lucide-react";
-import { Link, useNavigate } from "react-router";
+import { Link, replace, useNavigate } from "react-router";
 import { SignUpTemplete } from "../../../components/auth/SignUpTemplete";
 import { FieldWrapper, inputCls, SectionLabel } from "../../../components/auth/authUtils";
 import { useForm, type SubmitHandler } from "react-hook-form";
@@ -42,7 +42,7 @@ export function PatientRegister() {
       setUser(data.data.user);
       setToken(data.data.accessToken);
       setAccessToken(data.data.accessToken);
-      navigate('/');
+      navigate('/', {replace: true});
     },
     onError(error: any) {
       const details = error.response?.data?.errors?.details;

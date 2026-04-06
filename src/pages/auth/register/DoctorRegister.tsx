@@ -42,7 +42,7 @@ export function DoctorRegister() {
       setUser(data.data.user);
       setToken(data.data.accessToken);
       setAccessToken(data.data.accessToken);
-      navigate('/');
+      navigate("/", { replace: true });
     }, onError(error: any) {
       const details = error.response?.data?.errors?.details;
       console.log(error.response?.data?.errors);
@@ -103,7 +103,6 @@ export function DoctorRegister() {
       </div>
 
       <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
-        {/* Avatar Section */}
         <FieldWrapper id="avatar" label="Profile Photo" optional>
           <div className="flex items-center gap-5">
             <div className="relative shrink-0">

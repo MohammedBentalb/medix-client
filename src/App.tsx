@@ -8,6 +8,7 @@ import { AssistantSignIn } from "./pages/auth/login/AssistantSignIn";
 import { DoctorRegister } from "./pages/auth/register/DoctorRegister";
 import { PatientRegister } from "./pages/auth/register/PatientRegister";
 import { AssistantRegister } from "./pages/auth/register/AssistantRegister";
+import PublicOnly from "./auth/PublicOnly";
 
 export default function () {
   return (
@@ -19,21 +20,18 @@ export default function () {
             <Route path="/" element={<Home />} />
           </Route>
 
-          <Route
-            path="/auth/sign-in/roles"
-            element={<RoleSelection login={true} />}
-          />
-          <Route
-            path="/auth/sign-up/roles"
-            element={<RoleSelection login={false} />}
-          />
-          <Route path="/auth/sign-in/doctor" element={<DoctorSignIn />} />
-          <Route path="/auth/sign-in/patient" element={<PatientSignIn />} />
-          <Route path="/auth/sign-in/assistant" element={<AssistantSignIn />} />
+          <Route element={<PublicOnly />}>
+            <Route path="/auth/sign-in/roles" element={<RoleSelection login={true} />} />
+            <Route path="/auth/sign-up/roles" element={<RoleSelection login={false} />} />
 
-          <Route path="/auth/sign-up/doctor" element={<DoctorRegister />} />
-          <Route path="/auth/sign-up/patient" element={<PatientRegister />} />
-          <Route path="/auth/sign-up/assistant" element={<AssistantRegister />} />
+            <Route path="/auth/sign-in/doctor" element={<DoctorSignIn />} />
+            <Route path="/auth/sign-in/patient" element={<PatientSignIn />} />
+            <Route path="/auth/sign-in/assistant" element={<AssistantSignIn />} />
+
+            <Route path="/auth/sign-up/doctor" element={<DoctorRegister />} />
+            <Route path="/auth/sign-up/patient" element={<PatientRegister />} />
+            <Route path="/auth/sign-up/assistant" element={<AssistantRegister />} />
+          </Route>
 
         </Routes>
       </BrowserRouter>
