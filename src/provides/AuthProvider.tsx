@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState, type Dispatch, type ReactNode, type SetStateAction } from "react"
 import type { userType } from "../types"
+import api from "../lib/axios/api"
+import axios from "axios"
 
 
 type TUser = {
@@ -27,11 +29,6 @@ export const AuthContext = createContext<TContextData | undefined>(undefined)
 export default function AuthProvider({children}: {children: ReactNode}) {
     const [user, setUser] = useState<TUser | null>(null);
     const [token, setToken] = useState<string>('');
-
-    useEffect(()=>{
-        console.log(user)
-        console.log(token)
-    }, [user, token])
 
     return (
     <AuthContext.Provider value={{user, setUser, token, setToken}}>{children}</AuthContext.Provider>

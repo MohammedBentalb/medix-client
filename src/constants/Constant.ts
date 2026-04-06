@@ -30,22 +30,28 @@ const partners = [
 
 
 const navLinks = [
-    {
-        name: "Features",
-        href: "/#features",
-    },
-    {
-        name: "For Patients",
-        href: "/#features",
-    },
-    {
-        name: "For Doctors",
-        href: "/#features",
-    },
-    {
-        name: "Pricing",
-        href: "/#pricing",
-    },
+    { name: "Features", href: "/#features" },
+    { name: "For Patients", href: "/#features" },
+    { name: "For Doctors", href: "/#features" },
+    { name: "Pricing", href: "/#pricing" },
 ];
 
-export {steps, partners, navLinks}
+const authNavLinks = {
+    ROLE_PATIENT: [
+        { name: "Doctors", href: "/doctors" },
+        { name: "My Appointments", href: "/appointments" },
+        { name: "Profile", href: "/profile" },
+    ],
+    ROLE_ASSISTANT: [
+        { name: "Doctor Appointments", href: "/doctor-appointments" },
+        { name: "Profile", href: "/profile" },
+    ],
+    ROLE_DOCTOR: [
+        { name: "Nurses", href: "/nurses" },
+        { name: "Appointments", href: "/appointments" },
+        { name: "My Patients", href: "/my-patients" },
+        { name: "Profile", href: "/profile" },
+    ],
+};
+
+export {steps, partners, navLinks, authNavLinks}

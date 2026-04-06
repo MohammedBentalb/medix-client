@@ -1,8 +1,6 @@
 import { HeartPulseIcon } from "lucide-react";
 import { SignInForm } from "../../../components/auth/SignInFrom";
 
-
-
 export function AssistantSignIn() {
   return (
     <SignInForm

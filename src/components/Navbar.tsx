@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { ActivityIcon, MenuIcon, XIcon } from "lucide-react";
 import { Link } from "react-router";
-import { navLinks } from "../constants/Constant";
+import { navLinks, authNavLinks } from "../constants/Constant";
+import useAuth from "../hooks/useAuth";
 
 export function Navbar({ transparentTheme = 'dark' }: { transparentTheme?: 'dark' | 'light' }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const {user} = useAuth()
 
   useEffect(() => {
     const handleScroll = () => { setIsScrolled(window.scrollY > 20); };
@@ -34,25 +36,28 @@ export function Navbar({ transparentTheme = 'dark' }: { transparentTheme?: 'dark
           </div>
 
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
+            {(user ? authNavLinks[user.type] : navLinks).map((link) => (
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className={`text-sm font-medium transition-colors duration-300 ${linkColor}`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
-            <Link to={'/auth/roles'} className={`text-sm font-medium transition-colors duration-300 px-4 py-2 ${isTransparent ? "text-white hover:text-brand-300" : "text-stone-700 hover:text-brand-600"}`}>
-              Sign In
-            </Link>
-            <Link to={''} className="text-sm font-medium bg-brand-600 text-white px-5 py-2.5 rounded-full hover:bg-brand-700 transition-all shadow-sm hover:shadow-md active:scale-95">
-              Get Started
-            </Link>
-          </div>
+
+          {user ? null : (
+            <div className="hidden md:flex items-center gap-4">
+              <Link to={'/auth/sign-in/roles'} className={`text-sm font-medium transition-colors duration-300 px-4 py-2 ${isTransparent ? "text-white hover:text-brand-300" : "text-stone-700 hover:text-brand-600"}`}>
+                Sign In
+              </Link>
+              <Link to={'/auth/sign-up/roles'} className="text-sm font-medium bg-brand-600 text-white px-5 py-2.5 rounded-full hover:bg-brand-700 transition-all shadow-sm hover:shadow-md active:scale-95">
+                Get Started
+              </Link>
+            </div> 
+          )}
 
           <button
             className={`md:hidden p-2 transition-colors duration-300 ${isTransparent ? "text-white" : "text-stone-600"}`}
@@ -66,7 +71,7 @@ export function Navbar({ transparentTheme = 'dark' }: { transparentTheme?: 'dark
         {isMobileMenuOpen && (
           <nav>
             <div className="px-4 pt-2 pb-6 space-y-4 flex flex-col bg-white border-b border-stone-100">
-              {navLinks.map((link) => (
+              {(user ? authNavLinks[user.type] : navLinks).map((link) => (
                 <Link
                   to={link.href}
                   key={link.name}
@@ -76,14 +81,15 @@ export function Navbar({ transparentTheme = 'dark' }: { transparentTheme?: 'dark
                   {link.name}
                 </Link>
               ))}
+              {user ? null : (
               <div className="pt-4 flex flex-col gap-3 px-3">
-                <Link to={'/auth/signin/roles'} className="w-full text-center text-base font-medium text-stone-700 border border-stone-200 py-2.5 rounded-lg hover:bg-stone-50">
+                <Link to={'/auth/sign-in/roles'} className="w-full text-center text-base font-medium text-stone-700 border border-stone-200 py-2.5 rounded-lg hover:bg-stone-50">
                   Sign In
                 </Link>
-                <Link to={'/auth/signUp/roles'} className="w-full text-center text-base font-medium bg-brand-600 text-white py-2.5 rounded-lg hover:bg-brand-700">
+                <Link to={'/auth/sign-up/roles'} className="w-full text-center text-base font-medium bg-brand-600 text-white py-2.5 rounded-lg hover:bg-brand-700">
                   Get Started
                 </Link>
-              </div>
+              </div>)}
             </div>
           </nav>
         )}

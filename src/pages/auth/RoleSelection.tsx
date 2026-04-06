@@ -1,7 +1,7 @@
 import { UserIcon, StethoscopeIcon, HeartPulseIcon, ArrowLeftIcon, ChevronRightIcon, ActivityIcon } from "lucide-react";
 import { Link } from "react-router";
 
-export function RoleSelection() {
+export function RoleSelection({login} : {login: boolean}) {
 
   const roles = [
     {
@@ -13,7 +13,7 @@ export function RoleSelection() {
       iconColor: "text-brand-600",
       hoverBg: "hover:bg-brand-50/50",
       hoverBorder: "hover:border-brand-200",
-      path: "/auth/sign-in/patient",
+      path: login ? "/auth/sign-in/patient" : "/auth/sign-up/patient",
     },
     {
       id: "doctor",
@@ -24,7 +24,7 @@ export function RoleSelection() {
       iconColor: "text-indigo-600",
       hoverBg: "hover:bg-indigo-50/50",
       hoverBorder: "hover:border-indigo-200",
-      path: "/auth/sign-in/doctor",
+      path: login ? "/auth/sign-in/doctor" : "/auth/sign-up/doctor",
     },
     {
       id: "assistant",
@@ -35,7 +35,7 @@ export function RoleSelection() {
       iconColor: "text-rose-600",
       hoverBg: "hover:bg-rose-50/50",
       hoverBorder: "hover:border-rose-200",
-      path: "/auth/sign-in/assistant",
+      path: login ? "/auth/sign-in/assistant" : "/auth/sign-up/assistant",
     },
   ];
 
@@ -48,10 +48,10 @@ export function RoleSelection() {
               <ActivityIcon size={28} strokeWidth={2.5} />
             </div>
             <h1 className="text-3xl font-jakarta font-bold text-stone-900 mb-2 tracking-tight">
-              Welcome back
+              {login ? "Welcome back" : "Welcome to Medix"}
             </h1>
             <p className="text-stone-500 text-sm">
-              Select your role to continue to your dashboard
+              Select your role to continue to your portal
             </p>
           </div>
         </div>

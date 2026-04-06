@@ -17,6 +17,35 @@ export type SignInFormProps = {
   };
 }
 
+export type TUser = {
+    id: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    phone: string;
+    image: string;
+    nationalId: string;
+    type: userType;
+    status: string;
+    profile: null | object;
+    createdAt: string;
+}
+
+export type TAuthResponse = {
+    success: boolean;
+    data: {
+        accessToken: string;
+        expiresIn: number;
+        tokenType: string;
+        user: TUser;
+    };
+    meta: {
+        request_id: string;
+        service: string;
+        timestamp: string;
+    };
+}
+
 export type TApiError = {
     errors: {
         code: string;
@@ -24,3 +53,13 @@ export type TApiError = {
         details: { field: string; message: string }[];
     };
 };
+
+
+export type SignInTempleteProps = {
+    icon: React.ReactNode;
+    title: string;
+    subtitle: string;
+    gradientFrom: string;
+    gradientTo: string;
+    children: React.ReactNode;
+  }
