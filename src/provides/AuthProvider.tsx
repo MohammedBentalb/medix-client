@@ -1,20 +1,7 @@
-import { createContext, useEffect, useState, type Dispatch, type ReactNode, type SetStateAction } from "react"
-import type { userType } from "../types"
-import api from "../lib/axios/api"
-import axios from "axios"
+import { createContext, useState, type Dispatch, type ReactNode, type SetStateAction } from "react"
+import type { TUser } from "../types";
 
 
-type TUser = {
-    id: string,
-    email: string
-    firstName: string,
-    lastName: string,
-    phone: string,
-    image: string,
-    nationalId: string,
-    type: userType,
-    status: string,
-}
 
 type TContextData = {
     user: TUser | null,
