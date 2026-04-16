@@ -31,6 +31,17 @@ export function SignInForm({ role, title, subtitle, icon, colorTheme }: SignInFo
     }
   };
 
+  const signUpRoute = (role: userType) => {
+    switch (role) {
+      case "ROLE_DOCTOR":
+        return "/auth/sign-up/doctor";
+      case "ROLE_PATIENT":
+        return "/auth/sign-up/patient";
+      case "ROLE_ASSISTANT":
+        return "/auth/sign-up/assistant";
+    }
+  };
+
 
   const {register, formState: { errors }, handleSubmit, setError } = useForm<TLoginData>({resolver: zodResolver(loginSchema)});
 
@@ -139,7 +150,7 @@ export function SignInForm({ role, title, subtitle, icon, colorTheme }: SignInFo
       <div className="flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-20 py-12 bg-white">
         <div className="w-full max-w-md mx-auto">
           <Link
-            to="/auth/roles"
+            to="/auth/sign-in/roles"
             className="inline-flex items-center gap-2 text-sm font-medium text-stone-500 hover:text-stone-800 transition-colors mb-8"
           >
             <ArrowLeftIcon size={16} />
@@ -261,12 +272,12 @@ export function SignInForm({ role, title, subtitle, icon, colorTheme }: SignInFo
 
           <p className="mt-8 text-center text-sm text-stone-600">
             Don't have an account?{" "}
-            <a
-              href="#"
+            <Link
+              to={signUpRoute(role)}
               className={`font-medium ${colorTheme.text} hover:underline`}
             >
               Get Started
-            </a>
+            </Link>
           </p>
         </div>
       </div>

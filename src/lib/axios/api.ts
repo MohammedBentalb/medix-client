@@ -33,14 +33,16 @@ api.interceptors.response.use(response => response, async error => {
         try {
             const response = await api.post(`/auth/refresh`);
             const token = response.data.accessToken;
-            accessToken = token;            
+            accessToken = token;
             originalResquest.headers.Authorization = `Bearer ${token}`;
             return api(originalResquest)
-        } catch (error) {
+        } catch {
             accessToken = null;
-            return Promise.reject(error)   
+            window.location.href = '/auth/sign-in/roles';
+            return Promise.reject(error)
         }
     }
+
     return Promise.reject(error)
 })
 

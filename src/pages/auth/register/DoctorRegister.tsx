@@ -301,7 +301,7 @@ export function DoctorRegister() {
 
         <FieldWrapper
           id="consultationFee"
-          label="Consultation fee (USD)"
+          label="Consultation fee (MAD)"
           error={errors.consultationFee?.message}
           required
         >

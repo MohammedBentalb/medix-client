@@ -62,7 +62,6 @@ export function Hero() {
           </div>
 
           <div className="relative lg:h-[500px] flex items-center justify-center">
-            {/* Main Dashboard Card */}
             <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl shadow-stone-200/50 border border-stone-100 p-6 z-20">
               <div className="flex items-center justify-between mb-6">
                 <div>
