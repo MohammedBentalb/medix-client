@@ -181,6 +181,18 @@ export type TVisitFormPrescriptionItem = {
   instructions: string;
 };
 
+export type TimeSlot = {
+  id: string
+  start: string
+  end: string
+}
+
+export type DayAvailability = {
+  day: string
+  enabled: boolean
+  slots: TimeSlot[]
+}
+
 export type TSlot = { start: string; end: string };
 export type TAvailability = Record<string, Record<string, TSlot[]>>;
 

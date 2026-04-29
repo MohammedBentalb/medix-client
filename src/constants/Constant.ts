@@ -99,4 +99,5 @@ const appointmentStatusColors: Record<AppointmentStatus, { bg: string; text: str
 };
 
 const appointmentStatuses: (AppointmentStatus | "ALL")[] = ["ALL", "PENDING", "CONFIRMED", "COMPLETED", "CANCELED"];
-export {steps, partners, navLinks, authNavLinks, roles, fullMonths, darkBannerPrefixes, appointmentStatusColors, appointmentStatuses}
+const AVAILABILITY_DAYS = [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+export {steps, partners, navLinks, authNavLinks, roles, fullMonths, darkBannerPrefixes, appointmentStatusColors, appointmentStatuses, AVAILABILITY_DAYS}
