@@ -36,7 +36,7 @@ export function SignUpTemplete({ icon, title, subtitle, gradientFrom, gradientTo
               <ActivityIcon size={24} strokeWidth={2.5} />
             </div>
             <span className="font-jakarta font-bold text-xl tracking-tight">
-              MedFlow
+              Medix
             </span>
           </Link>
 

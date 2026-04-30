@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
 import type { AppointmentSectionProps, TSlot } from "../../types";
 import ConsultationTypeButton from "../../components/ConsultationTypeButton";
 import { fullMonths } from "../../constants/Constant";
@@ -40,7 +41,11 @@ export function AppointmentSection({ availability, isAvailabilityLoading, user, 
       const res = await api.post('/appointments', body);
       return res.data;
     },
-    onSuccess: () => navigate('/appointments'),
+    onSuccess: () => {
+      toast.success('Appointment booked');
+      navigate('/appointments');
+    },
+    onError: () => toast.error('Failed to book appointment'),
   });
 
   const handleConfirm = () => {

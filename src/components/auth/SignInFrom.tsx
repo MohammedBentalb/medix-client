@@ -117,7 +117,7 @@ export function SignInForm({ role, title, subtitle, icon, colorTheme }: SignInFo
               <ActivityIcon size={24} strokeWidth={2.5} />
             </div>
             <span className="font-jakarta font-bold text-xl tracking-tight">
-              MedFlow
+              Medix
             </span>
           </Link>
 

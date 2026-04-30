@@ -18,7 +18,7 @@ export function Testimonials() {
               </div>
               <p className="text-xl leading-relaxed text-stone-300 font-medium">
                 "I used to dread calling the doctor's office to make an
-                appointment or get a refill. With MedFlow, I can message my
+                appointment or get a refill. With Medix, I can message my
                 doctor directly and see all my lab results the moment they're
                 ready. It's completely changed how I manage my health."
               </p>
@@ -41,7 +41,7 @@ export function Testimonials() {
                 Provider Perspective
               </div>
               <p className="text-xl leading-relaxed text-stone-300 font-medium">
-                "MedFlow has reduced our administrative overhead by 40%. The
+                "Medix has reduced our administrative overhead by 40%. The
                 smart scheduling means fewer no-shows, and having the complete
                 patient history at my fingertips allows me to spend more time
                 actually talking to my patients rather than looking at a

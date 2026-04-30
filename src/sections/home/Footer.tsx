@@ -13,7 +13,7 @@ export function Footer() {
                 <ActivityIcon size={20} strokeWidth={2.5} />
               </div>
               <span className="font-jakarta font-bold text-xl text-stone-900 tracking-tight">
-                MedFlow
+                Medix
               </span>
             </div>
             <p className="text-stone-500 text-sm mb-6 max-w-xs leading-relaxed">
@@ -114,7 +114,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-stone-200 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-stone-500">
-            © 2026 MedFlow Inc. All rights reserved.
+            © 2026 Medix Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-sm text-stone-500">
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>

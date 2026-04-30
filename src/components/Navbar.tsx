@@ -40,7 +40,7 @@ export function Navbar({ transparentTheme = 'dark' }: { transparentTheme?: 'dark
               <ActivityIcon size={24} strokeWidth={2.5} />
             </div>
             <span className={`font-jakarta font-bold text-xl tracking-tight transition-colors duration-300 ${textColor}`}>
-              MedFlow
+              Medix
             </span>
           </Link>
 

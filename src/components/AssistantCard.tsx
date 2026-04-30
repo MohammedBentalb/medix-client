@@ -1,6 +1,7 @@
 import { ArrowRightIcon, UserPlusIcon, UserMinusIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import type { TAssistantProfile, TUser } from "../types";
 import api from "../lib/axios/api";
 import useAuth from "../hooks/useAuth";
@@ -20,6 +21,10 @@ export function AssistantCard({ assistant, isDoctor }: {assistant: TUser, isDoct
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['assistants'] });
+      toast.success('Assistant added');
+    },
+    onError: () => {
+      toast.error('Failed to assign assistant');
     },
   });
 
@@ -29,7 +34,12 @@ export function AssistantCard({ assistant, isDoctor }: {assistant: TUser, isDoct
       return res.data;
     },
     onSuccess: () => {
+      console.log('i made it ')
       queryClient.invalidateQueries({ queryKey: ['assistants'] });
+      toast.success('Assistant removed');
+    },
+    onError: () => {
+      toast.error('Failed to remove assistant');
     },
   });
 

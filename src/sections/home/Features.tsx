@@ -68,7 +68,7 @@ export function Features() {
           </h2>
           <p className="text-lg text-stone-600">
             Whether you're managing your own health or running a busy practice,
-            MedFlow provides the tools to make it effortless.
+            Medix provides the tools to make it effortless.
           </p>
         </div>
 

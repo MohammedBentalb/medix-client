@@ -14,7 +14,7 @@ export function CTA() {
           </h2>
           <p className="text-xl text-stone-600 mb-10 max-w-2xl mx-auto">
             Join thousands of patients and providers who are already using
-            MedFlow to simplify their healthcare journey.
+            Medix to simplify their healthcare journey.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">

@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { DarkBanner } from "../../components/DarkBanner";
 import { CalendarDaysIcon, ClockIcon, VideoIcon, MapPinIcon, UserRoundIcon, FileTextIcon, PhoneIcon, SearchIcon } from "lucide-react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import api from "../../lib/axios/api";
 import useAuth from "../../hooks/useAuth";
 import { useDebounce } from "../../hooks/useDebounce";
@@ -55,7 +56,9 @@ export function MyAppointments() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["appointments", user?.id] });
+      toast.success('Appointment confirmed');
     },
+    onError: () => toast.error('Failed to confirm appointment'),
   });
 
   const { mutate: cancelAppointment, isPending: isCanceling, variables: cancelingId } = useMutation({
@@ -65,7 +68,9 @@ export function MyAppointments() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["appointments", user?.id] });
+      toast.success('Appointment cancelled');
     },
+    onError: () => toast.error('Failed to cancel appointment'),
   });
 
   const { data, isLoading } = useQuery<{ appointments: TAppointment[]; pagination: TPagination }>({

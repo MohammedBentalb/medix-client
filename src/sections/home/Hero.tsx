@@ -28,7 +28,7 @@ export function Hero() {
             </h1>
 
             <p className="text-lg sm:text-xl text-stone-600 mb-8 leading-relaxed max-w-lg">
-              MedFlow simplifies healthcare management for everyone. Book
+              Medix simplifies healthcare management for everyone. Book
               appointments, access records, and manage your practice all in one
               secure platform.
             </p>

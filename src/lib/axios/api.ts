@@ -32,7 +32,7 @@ api.interceptors.response.use(response => response, async error => {
         originalResquest._retry = true;
         try {
             const response = await api.post(`/auth/refresh`);
-            const token = response.data.accessToken;
+            const token = response.data.data.accessToken;
             accessToken = token;
             originalResquest.headers.Authorization = `Bearer ${token}`;
             return api(originalResquest)

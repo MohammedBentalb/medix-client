@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
+import { Toaster } from "sonner";
 import Home from "./pages/public/Home";
 import { MainLayout } from "./layouts/MainLayout";
 import { RoleSelection } from "./pages/auth/RoleSelection";
@@ -28,6 +29,7 @@ import { VisitDetails } from "./pages/doctor/VisitDetails";
 export default function () {
   return (
     <>
+      <Toaster richColors position="top-right" />
       <BrowserRouter>
         <Routes> 
 
@@ -47,24 +49,33 @@ export default function () {
 
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
-
-            <Route element={<Protected roles={[roles['doctor'], roles['assistant'], roles['patient']]} />}>
-              <Route path="/doctors" element={<DoctorsListing />} />
-              <Route path="/doctors/:id" element={<DoctorProfile />} />
-              <Route path="/doctors/:id/book" element={<BookAppointment />} />
-              <Route path="/doctors/availability" element={<DoctorAvailability />} />
+ 
+            <Route element={<Protected roles={[roles.doctor, roles.assistant, roles.patient]} />}>
               <Route path="/assistants" element={<AssistantListing />} />
               <Route path="/assistants/:id" element={<AssistantProfile />} />
               <Route path="/profile" element={<UserProfile />} />
-              <Route path="/appointments" element={<MyAppointments />} />
-              <Route path="/appointments/:id" element={<AppointmentProcess />} />
-              <Route path="/my-visits" element={<MyVisits />} />
-              <Route path="/patients/history/:id" element={<PatientHistory />} />
-              <Route path="/visits/:visitId" element={<VisitDetails />} />
             </Route>
 
-            <Route element={<Protected roles={[roles['doctor'], roles['assistant']]} />}>
+            <Route element={<Protected roles={[roles.patient]} />}>
+              <Route path="/doctors" element={<DoctorsListing />} />
+              <Route path="/doctors/:id" element={<DoctorProfile />} />
+              <Route path="/doctors/:id/book" element={<BookAppointment />} />
+              <Route path="/my-visits" element={<MyVisits />} />
+            </Route>
+
+            <Route element={<Protected roles={[roles.doctor]} />}>
+              <Route path="/doctors/availability" element={<DoctorAvailability />} />
+            </Route>
+
+            <Route element={<Protected roles={[roles.patient, roles.doctor, roles.assistant]} />}>
+              <Route path="/appointments" element={<MyAppointments />} />
+            </Route>
+
+            <Route element={<Protected roles={[roles.doctor, roles.assistant]} />}>
+              <Route path="/appointments/:id" element={<AppointmentProcess />} />
               <Route path="/my-patients" element={<MyPatients />} />
+              <Route path="/patients/history/:id" element={<PatientHistory />} />
+              <Route path="/visits/:visitId" element={<VisitDetails />} />
             </Route>
           </Route>
 

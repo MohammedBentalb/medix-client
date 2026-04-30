@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ClockIcon, CalendarIcon, PlusIcon, Trash2Icon, CheckCircle2Icon, ArrowLeftIcon} from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
+import { toast } from 'sonner'
 import api from '../../lib/axios/api'
 import useAuth from '../../hooks/useAuth'
 import { DarkBanner } from '../../components/DarkBanner'
@@ -25,6 +26,8 @@ export function DoctorAvailability() {
       const res = await api.put(`/doctors/${user!.id}/schedule`, body)
       return res.data
     },
+    onSuccess: () => toast.success('Schedule saved'),
+    onError: () => toast.error('Failed to save schedule'),
   })
 
   const toggleDay = (index: number) => {
