@@ -67,13 +67,13 @@ export default function () {
               <Route path="/doctors/availability" element={<DoctorAvailability />} />
             </Route>
 
-            <Route element={<Protected roles={[roles.patient, roles.doctor, roles.assistant]} />}>
-              <Route path="/appointments" element={<MyAppointments />} />
-            </Route>
-
             <Route element={<Protected roles={[roles.doctor, roles.assistant]} />}>
               <Route path="/appointments/:id" element={<AppointmentProcess />} />
               <Route path="/my-patients" element={<MyPatients />} />
+            </Route>
+
+            <Route element={<Protected roles={[roles.patient, roles.doctor, roles.assistant]} />}>
+              <Route path="/appointments" element={<MyAppointments />} />
               <Route path="/patients/history/:id" element={<PatientHistory />} />
               <Route path="/visits/:visitId" element={<VisitDetails />} />
             </Route>

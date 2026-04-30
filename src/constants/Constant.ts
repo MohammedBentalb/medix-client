@@ -89,6 +89,7 @@ const darkBannerPrefixes = [
     "/my-patients",
     "/patients/history",
     "/visits",
+    "/appointments",
 ];
 
 const appointmentStatusColors: Record<AppointmentStatus, { bg: string; text: string; dot: string; border: string }> = {
